@@ -35,8 +35,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-# Dynamic nested forms using jQuery made easy; works with formtastic, simple_form or default forms
-gem 'cocoon'
 # A gem to automate using jQuery with Rails
 gem 'jquery-rails'
 # Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.
