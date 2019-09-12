@@ -1,0 +1,41 @@
+<%= form_with(model: sector, local: true) do |form| %>
+  <% if sector.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+
+      <ul>
+      <% sector.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <h4>Associação entre Setor e Problema</h4>
+  <div id="situations">
+	<%= form.fields_for :situations do |situation| %>
+  	<%= render 'situation_fields', f: situation %>
+	<% end %>
+
+	<div class="form-group links">
+  	<div class='col-md-offset-2 col-md-10'>
+    	<%= link_to_add_association form, :situations, class: 'btn btn-success', title: 'Adicionar' do %>
+          	<%= "add" %> Adicionar
+        	<%- end -%>
+  	</div>
+	</div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

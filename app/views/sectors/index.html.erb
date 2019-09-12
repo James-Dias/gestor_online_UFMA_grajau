@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sectors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Problema</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sectors.each do |sector| %>
+      <tr>
+        <td><%= sector.name %></td>
+        <td><%= sector.description %></td>
+        <td>
+
+          <ul class="list-group my-4">
+            <% sector.situations.each do |situation| %>
+              <li class="list-group-item"><%= situation.problem.name %></li>
+            <% end %>
+          </ul>
+
+        </td>
+        <td><%= link_to 'Show', sector %></td>
+        <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
+        <td><%= link_to 'Destroy', sector, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sector', new_sector_path %>
