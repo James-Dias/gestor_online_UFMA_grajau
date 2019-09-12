@@ -39,6 +39,29 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cocoon'
 # A gem to automate using jQuery with Rails
 gem 'jquery-rails'
+# Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.
+gem 'bootstrap', '~> 4.1.1'
+# bootstrap-sass extras.
+gem 'bootstrap-sass-extras'
+# bootstrap glyphicons
+gem 'bootstrap-glyphicons'
+# A set of common locale data and translations to internationalize and/or localize your Rails applications.
+gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
+# Flexible authentication solution for Rails with Warden.
+gem 'devise'
+# Devise Bootstrap views with i18n support.
+gem 'devise-bootstrap-views'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
+gem 'kaminari'
+# Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
+gem 'simple_form'
+# Minimal authorization through OO design and pure Ruby classes
+gem 'pundit'
+# PDF generator (from HTML) plugin for Ruby on Rails
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

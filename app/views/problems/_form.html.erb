@@ -1,27 +1,11 @@
-<%= form_with(model: problem, local: true) do |form| %>
-  <% if problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
-
-      <ul>
-      <% problem.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for @problem, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+  <div class="form-group">
+    <div class='col-sm-offset-3 col-sm-9'>
+      <%= f.button :submit, class: 'btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  problems_path, class: 'btn btn-default' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>

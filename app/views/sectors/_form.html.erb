@@ -1,41 +1,26 @@
-<%= form_with(model: sector, local: true) do |form| %>
-  <% if sector.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+<%= simple_form_for @sector, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
 
-      <ul>
-      <% sector.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <h4>Associação entre Setor e Problema</h4>
+    <div id="situations">
+    <%= f.fields_for :situations do |situation| %>
+      <%= render 'situation_fields', f: situation %>
+    <% end %>
+
+    <div class="form-group links">
+      <div class='col-md-offset-2 col-md-10'>
+        <%= link_to_add_association f, :situations, class: 'btn btn-success', title: 'Adicionar' do %>
+              <%= glyph 'plus-sign' %> Adicionar
+            <%- end -%>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <h4>Associação entre Setor e Problema</h4>
-  <div id="situations">
-	<%= form.fields_for :situations do |situation| %>
-  	<%= render 'situation_fields', f: situation %>
-	<% end %>
-
-	<div class="form-group links">
-  	<div class='col-md-offset-2 col-md-10'>
-    	<%= link_to_add_association form, :situations, class: 'btn btn-success', title: 'Adicionar' do %>
-          	<%= "add" %> Adicionar
-        	<%- end -%>
-  	</div>
-	</div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <div class='col-sm-offset-3 col-sm-9'>
+      <%= f.button :submit, class: 'btn-primary' %>
+      <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+                  sectors_path, class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
