@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # A gem to automate using jQuery with Rails
 gem 'jquery-rails'
 # Bootstrap 4 Ruby Gem for Rails / Sprockets and Compass.
-gem 'bootstrap', '~> 4.1.1'
+gem "bootstrap", ">= 4.3.1"
 # bootstrap-sass extras.
 gem 'bootstrap-sass-extras'
 # bootstrap glyphicons
