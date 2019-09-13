@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projeto em desenvolvimento para auxiliar em alguns detalhes da gestão de infraestrutura da UFMA Campus Grajaú
 
-Things you may want to cover:
+Principais Tecnologias utilizadas:
 
-* Ruby version
+* Ruby on Rails
 
-* System dependencies
+* Postgres SQL
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Bootstrap 4
 
 * ...
