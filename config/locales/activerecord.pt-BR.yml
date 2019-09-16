@@ -1,0 +1,40 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+      problem:
+        one: Problema
+        other: problemas
+      situation:
+        one: Situação
+        other: Situações
+      sector:
+        one: Setor
+        other: Setores
+    attributes:
+      user:
+        id: ID
+        name: Nome
+        cpf: CPF
+        kind: Tipo
+        occupation: Profissão
+        description: Descrição
+        created_at: Criado em
+      problem:
+        id: ID
+        name: Nome
+        description: Descrição
+        created_at: Criado em
+      situation:
+        id: ID
+        description: Descrição
+        created_at: Criado em
+        problem: Problema
+        sector: Setor
+      sector:
+        id: ID
+        name: Nome
+        description: Descrição
+        created_at: Criado em
