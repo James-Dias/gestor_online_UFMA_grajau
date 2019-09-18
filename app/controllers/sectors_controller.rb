@@ -4,7 +4,7 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @sectors = Sector.all
+    @sectors = Sector.order(:created_at).page params[:page]
   end
 
   # GET /sectors/1

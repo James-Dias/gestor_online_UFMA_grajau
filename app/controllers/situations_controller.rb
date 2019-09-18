@@ -4,7 +4,8 @@ class SituationsController < ApplicationController
   # GET /situations
   # GET /situations.json
   def index
-    @situations = Situation.all
+    @situations = Situation.order(:created_at).page params[:page]
+
   end
 
   # GET /situations/1

@@ -38,3 +38,8 @@
 <%= link_to t('.new', default: t("helpers.links.new")),
             new_problem_path,
             class: 'btn btn-primary' %>
+
+<div class="text-center">
+  <%= page_entries_info @problems %>
+  <%= paginate @problems %>
+</div>
