@@ -58,6 +58,13 @@ gem 'pundit'
 # PDF generator (from HTML) plugin for Ruby on Rails
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+# Draper adds an object-oriented layer of presentation logic to your Rails apps.
+gem 'draper', '~> 3.0', '>= 3.0.1'
+# CPF and CNPJ validations for ActiveModel and Rails
+gem 'validates_cpf_cnpj'
+# Validate, generate and format CPF/CNPJ numbers. Include command-line tools.
+gem "cpf_cnpj"
+
 
 
 
