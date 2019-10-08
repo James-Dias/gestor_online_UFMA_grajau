@@ -22,6 +22,8 @@ pt-BR:
         occupation: Profissão
         description: Descrição
         created_at: Criado em
+        administrator: Administrador
+        secretary: Secretário
       problem:
         id: ID
         name: Nome
