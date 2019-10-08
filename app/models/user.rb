@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum kind: {administrator: 0, secretary: 1}
+
+  validates :name, :cpf, :kind, presence: true
 end
