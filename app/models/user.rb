@@ -7,4 +7,5 @@ class User < ApplicationRecord
   enum kind: {secretary: 0, administrator: 1}
 
   validates :name, :cpf, :kind, presence: true
+  validates :cpf, uniqueness: true
 end
