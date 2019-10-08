@@ -10,3 +10,7 @@ development: &default
 test:
   <<: *default
   database: gestor_online_test
+
+production:
+  <<: *default
+  database: gestor_online
