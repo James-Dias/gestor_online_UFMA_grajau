@@ -20,7 +20,7 @@
         <td><%= situation.id %></td>
           <td><%= situation.sector.name %></td>
           <td><%= situation.problem.name %></td>
-          <td><%= situation.status %></td>
+          <td><%= model_class.human_attribute_name(situation.status) %></td>
           <td><%= situation.description %></td>
         <td><%=l situation.created_at, format: :long %></td>
         <td>

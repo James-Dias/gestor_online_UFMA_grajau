@@ -35,6 +35,9 @@ pt-BR:
         created_at: Criado em
         problem: Problema
         sector: Setor
+        active: Ativo
+        in_progress: Em andamento
+        inactive: Inativo
       sector:
         id: ID
         name: Nome

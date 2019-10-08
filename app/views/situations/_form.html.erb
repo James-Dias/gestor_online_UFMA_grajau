@@ -1,7 +1,15 @@
 <%= simple_form_for @situation, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f| %>
     <%= f.association :sector %>
     <%= f.association :problem %>
-    <%= f.input :status %>
+    <div class="form-group row required">
+      <div class="col-sm-3 control-label required">
+        <%= f.label :status %>
+      </div>
+      <div class="col-sm-9">
+        <%= f.select :status, Situation.statuses.keys.collect { |key| [Situation.human_attribute_name(key), key] },
+        {include_blank: true}, {class: "form-control"} %>
+      </div>
+    </div>
     <%= f.input :description %>
   <div class="form-group">
     <div class='col-sm-offset-3 col-sm-9'>
