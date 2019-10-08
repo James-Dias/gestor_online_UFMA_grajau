@@ -12,5 +12,6 @@ test:
   database: gestor_online_test
 
 production:
-  <<: *default
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: gestor_online
+  encoding: unicode
