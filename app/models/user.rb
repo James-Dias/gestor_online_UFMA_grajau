@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :validatable
 
-  enum kind: {administrator: 0, secretary: 1}
+  enum kind: {secretary: 0, administrator: 1}
 
   validates :name, :cpf, :kind, presence: true
 end
