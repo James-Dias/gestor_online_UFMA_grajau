@@ -4,8 +4,35 @@ class SituationsController < ApplicationController
   # GET /situations
   # GET /situations.json
   def index
-    @situations = Situation.order(:created_at).page params[:page]
+    if params[:filterrific]
+      params[:filterrific].permit!
+    end
+    @filterrific = initialize_filterrific(
+        Situation,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Situation.options_for_sorted_by,
+        },
+        :persistence_id => false,
+      ) or return
 
+    @situations = @filterrific.find
+
+
+    respond_to do |format|
+      format.html { @situations  = @situations.page params[:page]}
+      format.xlsx
+    end
+  end
+
+  def all_situations_report
+    @situations = Situation.order(:id)
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="situacoes.xlsx"'
+      }
+    end
   end
 
   # GET /situations/1

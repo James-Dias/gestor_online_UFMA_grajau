@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Situacoes") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(SETOR PROBLEMA STATUS DESCRIÇÃO DT_CRIAÇÃO)
+
+  # each user is a row on your spreadsheet
+  @situations.each do |situation|
+    sheet.add_row [
+                   situation.sector.name,
+                   situation.problem.name,
+                   Situation.human_attribute_name(situation.status),
+                   situation.description,
+                   situation.created_at,
+                   ]
+  end
+end

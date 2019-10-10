@@ -2,6 +2,64 @@
 <div class="page-header">
   <h1><%=t '.title', default: Situation.model_name.human(count: @situations.count) %></h1>
 </div>
+<div class="card bg-light">
+  <div class="card-body">
+  <%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit', class: "" } do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="exampleInputName2">Setor</label>
+          <%= f.collection_select :sector_query, Sector.order(:id), :name, :name,
+           {prompt: ''}, {"data-placeholder":"Setor",class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="exampleInputName2">Problema</label>
+          <%= f.collection_select :problem_query, Problem.order(:id), :name, :name,
+           {prompt: ''}, {"data-placeholder":"Problema",class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="exampleInputName2">Status</label>
+        <%= f.select :status_query, Situation.statuses.keys.collect { |key| [Situation.human_attribute_name(key), key] },
+           {include_blank: true}, {class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="exampleInputName2">Ordenar</label>
+          <%= f.select(:sorted_by,
+                       @filterrific.select_options[:sorted_by],
+                       { include_blank: '' },
+                       class: "form-control" ) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_tag(type: 'submit', class: 'btn btn-success') do %>
+        <%= glyph 'search' %> Buscar
+      <% end %>
+      <%= link_to  new_situation_path, class: 'btn btn-primary', title: "#{t('.new', default: t('helpers.links.new'))}" do %>
+        <%= glyph 'plus-sign' %> Novo
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="float-right">
+      <%= link_to situations_path(format: "xlsx", filterrific: params[:filterrific]),
+       class: "btn btn-success" do %>
+        <%= glyph 'download' %> Exportar
+      <% end %>
+      <%= link_to 'Resetar filtros', situations_path, class: "btn btn-link" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,7 +88,7 @@
           <%= link_to edit_situation_path(situation), class: 'btn btn-xs', title: "#{ t('.edit', default: t('helpers.links.edit')) }" do %>
             <%= glyph 'pencil' %>
           <%- end -%>
-          <%= link_to situation_path(situation), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
+          <%= link_to situation_path(situation), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Você tem certeza?')) }, class: 'btn btn-xs', title: "#{ t('.destroy', default: t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
         </td>
@@ -38,10 +96,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', default: t("helpers.links.new")),
-            new_situation_path,
-            class: 'btn btn-primary' %>
 
 <div class="text-center">
   <%= page_entries_info @situations %>

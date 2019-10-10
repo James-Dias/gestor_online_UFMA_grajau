@@ -64,7 +64,12 @@ gem 'draper', '~> 3.0', '>= 3.0.1'
 gem 'validates_cpf_cnpj'
 # Validate, generate and format CPF/CNPJ numbers. Include command-line tools.
 gem "cpf_cnpj"
-
+# Filterrific is a Rails Engine plugin that makes it easy to filter, search, and sort your ActiveRecord lists.
+gem 'filterrific'
+#export to excel
+gem 'rubyzip', '~> 1.1.0'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
 
 
 
